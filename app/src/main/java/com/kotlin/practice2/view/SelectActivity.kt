@@ -5,11 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.kotlin.practice2.MainActivity
-import com.kotlin.practice2.R
+import com.kotlin.practice2.view.main.MainActivity
 import com.kotlin.practice2.databinding.ActivitySelectBinding
 import com.kotlin.practice2.view.adapter.SelectRVAdapter
-import timber.log.Timber
 
 class SelectActivity : AppCompatActivity() {
 

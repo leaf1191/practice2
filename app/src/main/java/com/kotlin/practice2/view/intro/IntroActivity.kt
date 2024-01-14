@@ -6,9 +6,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.lifecycle.ViewModel
-import com.kotlin.practice2.MainActivity
-import com.kotlin.practice2.R
+import com.kotlin.practice2.view.main.MainActivity
 import com.kotlin.practice2.databinding.ActivityIntroBinding
 import timber.log.Timber
 
