@@ -5,9 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.PeriodicWorkRequest
+import androidx.work.WorkManager
+import com.kotlin.practice2.background.GetCoinPriceRecentContractedWorkManager
 import com.kotlin.practice2.view.main.MainActivity
 import com.kotlin.practice2.databinding.ActivitySelectBinding
 import com.kotlin.practice2.view.adapter.SelectRVAdapter
+import java.util.concurrent.TimeUnit
 
 class SelectActivity : AppCompatActivity() {
 
@@ -40,8 +45,28 @@ class SelectActivity : AppCompatActivity() {
             if(it.equals("done")){
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
+
+                saveInterestCoinDataPeriodic()
             }
         }
 
     }
+
+    private fun saveInterestCoinDataPeriodic(){
+        val myWork = PeriodicWorkRequest.Builder(
+            GetCoinPriceRecentContractedWorkManager::class.java,
+            15,
+            TimeUnit.MINUTES
+        ).build()
+
+        WorkManager.getInstance(this).enqueueUniquePeriodicWork(
+            "GetCoinPriceRecentContractedWorkManager",
+            ExistingPeriodicWorkPolicy.KEEP,
+            myWork
+        )
+
+
+    }
+
+
 }

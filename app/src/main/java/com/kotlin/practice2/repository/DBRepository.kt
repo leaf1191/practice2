@@ -3,6 +3,7 @@ package com.kotlin.practice2.repository
 import com.kotlin.practice2.App
 import com.kotlin.practice2.db.CoinPriceDatabase
 import com.kotlin.practice2.db.entity.InterestCoinEntity
+import com.kotlin.practice2.db.entity.SelectedCoinPriceEntity
 
 class DBRepository {
 
@@ -16,6 +17,13 @@ class DBRepository {
     fun updateInterestCoinData(interestCoinEntity: InterestCoinEntity) = db.interestCoinDAO().update(interestCoinEntity)
 
     fun getAllInterestSelectedCoinData() = db.interestCoinDAO().getSelectedData()
+
+
+    fun getAllCoinPriceData() = db.selectedCoinDAO().getAllData()
+
+    fun insertCoinPriceData(selectedCoinPriceEntity: SelectedCoinPriceEntity) = db.selectedCoinDAO().insert(selectedCoinPriceEntity)
+
+    fun getOneSelectedCoinData(coinName : String) = db.selectedCoinDAO().getOneCoinData(coinName)
 
 
 }
