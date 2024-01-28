@@ -44,7 +44,7 @@ class PriceForegroundService : Service() {
                 }
             }
             "STOP"->{
-                stopForeground(true)
+
                 try {
                     job.cancel()
                     stopForeground(true)
@@ -56,11 +56,11 @@ class PriceForegroundService : Service() {
 
         }
 
-        return super.onStartCommand(intent, flags, startId)
+        return START_STICKY
     }
 
     override fun onBind(p0: Intent?): IBinder? {
-        TODO("Not yet implemented")
+        return null
     }
 
 
